@@ -1,11 +1,12 @@
-import { ReactSvg } from "~/assets/icons/React.icon";
+import { ReactSvg } from "@/assets/icons/React.icon";
 import { JourneyCard } from "./JourneyCard";
-import { AstroSvg } from "~/assets/icons/Astro.icon";
-import { TypescriptSvg } from "~/assets/icons/Typescript.icon";
-import { DockerSvg } from "~/assets/icons/Docker.icon";
-import { TailwindSvg } from "~/assets/icons/Tailwind.icon";
-import { GitSvg } from "~/assets/icons/Git.icon";
+import { AstroSvg } from "@/assets/icons/Astro.icon";
+import { TypescriptSvg } from "@/assets/icons/Typescript.icon";
+import { DockerSvg } from "@/assets/icons/Docker.icon";
+import { TailwindSvg } from "@/assets/icons/Tailwind.icon";
+import { GitSvg } from "@/assets/icons/Git.icon";
 import { useSearchParams } from "@remix-run/react";
+import { JourneyDrawer } from "./JourneyDrawer";
 
 const JourneyList = [
   {
@@ -242,7 +243,9 @@ export const Journey = () => {
     <div className="size-full overflow-auto max-h-[40rem]">
       <div className="grid h-fit w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {journeyListFilteredByUrlSearch.map((journey) => (
-          <JourneyCard key={journey.id} {...journey} />
+          <JourneyDrawer key={journey.id} {...journey}>
+            <JourneyCard {...journey} />
+          </JourneyDrawer>
         ))}
       </div>
     </div>

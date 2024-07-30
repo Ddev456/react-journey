@@ -1,3 +1,7 @@
+import { cn } from "@/lib/utils";
+import { Link } from "@remix-run/react";
+import { buttonVariants } from "./ui/button";
+
 export const JourneyCard = ({
   name,
   categories,
@@ -8,7 +12,7 @@ export const JourneyCard = ({
   journeyType: { name: string; icon: JSX.Element };
 }) => {
   return (
-    <div className="flex flex-col items-center justify-center gap-4 rounded-lg border p-4 shadow transition-colors hover:border-gray-300 hover:bg-gray-100">
+    <div className="flex flex-col items-center justify-center gap-4 rounded-lg border p-4 shadow transition-colors hover:border-orange-300 hover:bg-orange-100">
       <div className="flex w-full items-center gap-2">
         {journeyType.icon}
         <p className="text-base font-bold">{journeyType.name}</p>
@@ -27,7 +31,7 @@ export const JourneyCard = ({
         ))}
 
         <a
-          className="inline-flex items-center justify-center rounded-md px-3 py-1.5 ring-indigo-500 ring-offset-2 focus:outline-none focus:ring bg-gray-200 text-gray-950 hover:bg-gray-300 h-8 text-sm font-semibold ml-auto"
+          className="inline-flex items-center justify-center rounded-md px-3 py-1.5 ring-indigo-500 ring-offset-2 focus:outline-none focus:ring bg-orange-200 text-gray-950 hover:bg-orange-300 h-8 text-sm font-semibold ml-auto"
           href="https://react.dev/learn/writing-markup-with-jsx"
         >
           <svg
@@ -50,7 +54,13 @@ export const JourneyCard = ({
             <path d="M16 12h2"></path>
           </svg>
         </a>
-        <button className="inline-flex items-center justify-center rounded-md px-3 py-1.5 ring-indigo-500 ring-offset-2 focus:outline-none focus:ring bg-gray-200 text-gray-950 hover:bg-gray-300 h-8 text-sm font-semibold">
+        <Link
+          className={cn(
+            buttonVariants({ variant: "ghost", size: "sm" }),
+            "inline-flex items-center justify-center rounded-md px-3 py-1.5 ring-indigo-500 ring-offset-2 focus:outline-none focus:ring bg-orange-200 text-gray-950 hover:bg-orange-300 h-8 text-sm font-semibold"
+          )}
+          to="/new"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -67,7 +77,7 @@ export const JourneyCard = ({
             <path d="M8 12h8"></path>
             <path d="M12 8v8"></path>
           </svg>
-        </button>
+        </Link>
       </div>
     </div>
   );
